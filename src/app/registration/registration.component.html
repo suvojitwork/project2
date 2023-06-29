@@ -1,0 +1,63 @@
+<!-- <p>registration works!</p> -->
+
+
+
+<div class="d-flex justify-content-center align-items-center">
+    <form class="myForm bg-custom p-5 rounded" [formGroup]="addForm" (ngSubmit)="formsubmit()">
+        <div class="name-wrapper mb-3">
+            <label for="first_name">First Name:</label>
+            <input type="text" class="form-control" formControlName="first_name" id="first_name">
+            <ng-container *ngIf="addForm.get('first_name')?.touched">
+                <ng-container *ngIf="addForm.get('first_name')?.hasError('required')">
+                       <p>Required</p>
+                </ng-container>
+                <ng-container *ngIf="addForm.get('first_name')?.hasError('minlength')">
+                       <p>Required</p>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="name-wrapper mb-3">
+            <label for="last_name">Last Name:</label>
+            <input type="text" class="form-control" formControlName="last_name" id="last_name">
+            <ng-container *ngIf="addForm.get('last_name')?.touched">
+                <ng-container *ngIf="addForm.get('last_name')?.hasError('required')">
+                       <p>Required</p>
+                </ng-container>
+                <ng-container *ngIf="addForm.get('last_name')?.hasError('minlength')">
+                       <p>Required</p>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="name-wrapper mb-3">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" formControlName="email" id="email">
+            <ng-container *ngIf="addForm.get('email')?.touched">
+                <ng-container *ngIf="addForm.get('email')?.hasError('required')">
+                       <p>Required</p>
+                </ng-container>
+               
+            </ng-container>
+        </div>
+        <div class="name-wrapper mb-3">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" id="password">
+            <ng-container *ngIf="addForm.get('password')?.touched">
+                <ng-container *ngIf="addForm.get('password')?.hasError('required')">
+                       <p>Required</p>
+                </ng-container>
+                
+            </ng-container>
+        </div>
+     
+        <div class="name-wrapper mb-3">
+            <label for="img">Image:</label>
+            <input type="file" class="form-control" id="img" (change)="fileSelect($event)">
+            
+          
+        </div>
+
+        <div class="button-wrapper">
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+<!-- <p>job-portal-form2 works!</p> -->
+
+<form [formGroup]="addForm" (ngSubmit)="dataSubmit()">
+  <label for="fullname">Full Name: </label>
+  <input type="text" formControlName="fullname" id="fullname" /><br /><br />
+  <div *ngIf="addForm.get('fullname')?.touched && addForm.get('fullname')?.hasError('required')">
+    <p>* Required</p>
+  </div>
+
+  <label for="age">Age: </label>
+  <input type="number" formControlName="age" id="age" /><br /><br />
+  <div *ngIf="addForm.get('age')?.touched && addForm.get('age')?.hasError('required')">
+    <p>* Required</p>
+  </div>
+
+  <label for="city">City: </label>
+  <input type="text" formControlName="city" id="city" /><br /><br />
+  <div *ngIf="addForm.get('city')?.touched && addForm.get('city')?.hasError('required')">
+    <p>* Required</p>
+  </div>
+
+  <label for="mail">Email: </label>
+  <input type="email" formControlName="mail" id="mail" /><br /><br />
+  <div *ngIf="addForm.get('mail')?.touched && addForm.get('mail')?.hasError('required')">
+    <p>* Required</p>
+  </div>
+
+  <label for="pwd">Password: </label>
+  <input type="password" formControlName="pwd" id="pwd" /><br /><br />
+  <div *ngIf="addForm.get('pwd')?.touched">
+    <div *ngIf="addForm.get('pwd')?.hasError('required')">Required field</div>
+    <div *ngIf="addForm.get('pwd')?.hasError('pattern')">Wrong pattern</div>
+  </div>
+
+  <input type="submit" value="Add data" [disabled]="!addForm.valid" />
+</form>

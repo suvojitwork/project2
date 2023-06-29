@@ -1,0 +1,149 @@
+<form class="myNewForm" [formGroup]="addForm" (ngSubmit)="submitData()">
+  <!-- First Name -->
+  <label for="firstName">First Name:</label>
+  <input type="text" formControlName="firstName" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('firstName')?.touched">
+    <ng-container *ngIf="addForm.get('firstName')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('firstName')?.hasError('pattern')">
+      <p>First Name should start with a capital letter and contain only alphabets.</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('firstName')?.hasError('minlength')">
+      <p>Minimum length is 3 characters.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End First Name -->
+
+  <!-- Last Name -->
+  <label for="lastName">Last Name:</label>
+  <input type="text" formControlName="lastName" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('lastName')?.touched">
+    <ng-container *ngIf="addForm.get('lastName')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('lastName')?.hasError('minlength')">
+      <p>Minimum length is 2 characters.</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('lastName')?.hasError('maxlength')">
+      <p>Maximum length is 20 characters.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Last Name -->
+
+  <!-- Gender -->
+  <label for="gender">Gender:</label>
+  <select formControlName="gender">
+    <option value="">Select</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <br /><br />
+
+  <ng-container *ngIf="addForm.get('gender')?.touched">
+    <ng-container *ngIf="addForm.get('gender')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Gender -->
+
+  <!-- Qualification -->
+  <label>Qualification:</label> <br />
+  <label for="qualification1">
+    <input type="checkbox" formControlName="qualification1" id="qualification1" /> Qualification 1
+  </label>
+  <br />
+  <label for="qualification2">
+    <input type="checkbox" formControlName="qualification2" id="qualification2" /> Qualification 2
+  </label>
+  <br /><br />
+
+  <ng-container *ngIf="addForm.get('qualification1')?.touched || addForm.get('qualification2')?.touched">
+    <ng-container *ngIf="addForm.hasError('qualifications', 'required')">
+      <p>* Please select at least one qualification.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Qualification -->
+
+  <!-- Email -->
+  <label for="email">Email:</label>
+  <input type="email" formControlName="email" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('email')?.touched">
+    <ng-container *ngIf="addForm.get('email')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('email')?.hasError('pattern')">
+      <p>Please enter a valid email address.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Email -->
+
+  <!-- Password -->
+  <label for="password">Password:</label>
+  <input type="password" formControlName="password" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('password')?.touched">
+    <ng-container *ngIf="addForm.get('password')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('password')?.hasError('pattern')">
+      <p>
+        Password must contain at least one letter (capital or small), one digit, and the special characters only.
+      </p>
+    </ng-container>
+  </ng-container>
+  <!-- End Password -->
+
+  <!-- Phone Number -->
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="tel" formControlName="phoneNumber" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('phoneNumber')?.touched">
+    <ng-container *ngIf="addForm.get('phoneNumber')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('phoneNumber')?.hasError('pattern')">
+      <p>Invalid phone number. Please enter a valid 10-digit number starting with 9.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Phone Number -->
+
+  <!-- City -->
+  <label for="city">City:</label>
+  <select formControlName="city">
+    <option value="">Select</option>
+    <option value="city1">City 1</option>
+    <option value="city2">City 2</option>
+    <option value="city3">City 3</option>
+  </select>
+  <br /><br />
+
+  <ng-container *ngIf="addForm.get('city')?.touched">
+    <ng-container *ngIf="addForm.get('city')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+  </ng-container>
+  <!-- End City -->
+
+  <!-- Pin -->
+  <label for="pin">Pin:</label>
+  <input type="text" formControlName="pin" /> <br /><br />
+
+  <ng-container *ngIf="addForm.get('pin')?.touched">
+    <ng-container *ngIf="addForm.get('pin')?.hasError('required')">
+      <p>* required field</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('pin')?.hasError('maxlength')">
+      <p>Maximum length is 6 digits.</p>
+    </ng-container>
+    <ng-container *ngIf="addForm.get('pin')?.hasError('pattern')">
+      <p>Pin should contain only digits.</p>
+    </ng-container>
+  </ng-container>
+  <!-- End Pin -->
+
+  <input type="submit" value="Submit" [disabled]="addForm.invalid || addForm.pristine" />
+</form>

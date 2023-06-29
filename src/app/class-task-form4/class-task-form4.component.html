@@ -1,0 +1,280 @@
+<!-- <p>class-task-form4 works!</p> -->
+
+<div class="container">
+<form [formGroup]="addForm" (ngSubmit)="dataSubmit()">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input
+      type="text"
+      formControlName="firstName"
+      id="firstName"
+      class="form-control"
+    />
+
+    <div
+      *ngIf="
+      addForm.get('firstName')?.touched && 
+      addForm.get('firstName')?.hasError('required')"
+      class="text-danger"
+    >
+      * Required
+    </div>
+
+    <div
+      *ngIf="
+        addForm.get('firstName')?.touched &&
+        addForm.get('firstName')?.hasError('pattern')
+      "
+      class="text-danger"
+    >
+      First name must start with a capital letter and contain only alphabets
+    </div>
+    <div
+      *ngIf="
+        addForm.get('firstName')?.touched &&
+        addForm.get('firstName')?.hasError('minlength')
+      "
+      class="text-danger"
+    >
+      First name must have a minimum length of 3
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input
+      type="text"
+      formControlName="lastName"
+      id="lastName"
+      class="form-control"
+    />
+    <div
+      *ngIf="
+      addForm.get('lastName')?.touched && 
+      addForm.get('lastName')?.hasError('required')"
+      class="text-danger"
+    >
+      * Required
+    </div>
+
+    <div
+      *ngIf="
+        addForm.get('lastName')?.touched &&
+        addForm.get('lastName')?.hasError('minlength')
+      "
+      class="text-danger"
+    >
+      Last name must have a minimum length of 2
+    </div>
+    <div
+      *ngIf="
+        addForm.get('lastName')?.touched &&
+        addForm.get('lastName')?.hasError('maxlength')
+      "
+      class="text-danger"
+    >
+      Last name must have a maximum length of 20
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender:</label>
+    <select formControlName="gender" id="gender" class="form-control">
+      <option value="" disabled selected>Select gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <div
+      *ngIf="
+        addForm.get('gender')?.touched &&
+        addForm.get('gender')?.hasError('required')
+      "
+      class="text-danger"
+    >
+      * Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="qualification">Qualification:</label>
+    <!-- <ng-container *ngFor="let q of qualification">
+      <input type="checkbox" name={{q}} value={{q}} (change)="check($event)">{{q}}>
+    </ng-container> -->
+    <div class="form-check">
+        <input
+        type="checkbox"
+        formControlName="qualifications"
+        id="bachelorQualification"
+        value="bachelor"
+        class="form-check-input"
+      />
+      <label for="qualifications" class="form-check-label"
+        >Bachelor's Degree</label
+      >
+    </div>
+    <div class="form-check">
+      <input
+        type="checkbox"
+        formControlName="qualifications"
+        id="masterQualification"
+        value="master"
+        class="form-check-input"
+      />
+      <label for="qualifications" class="form-check-label"
+        >Master's Degree</label
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      class="form-control"
+    />
+    <div
+      *ngIf="
+        addForm.get('email')?.touched &&
+        addForm.get('email')?.hasError('required')
+      "
+      class="text-danger"
+    >
+      * Required
+    </div>
+    <div
+      *ngIf="
+        addForm.get('email')?.touched &&
+        addForm.get('email')?.hasError('pattern')
+      "
+      class="text-danger"
+    >
+      Invalid email format
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      formControlName="password"
+      id="password"
+      class="form-control"
+    />
+    <div
+      *ngIf="
+        addForm.get('password')?.touched &&
+        addForm.get('password')?.hasError('required')
+      "
+      class="text-danger"
+    >
+      * Required
+    </div>
+    <div
+      *ngIf="
+        addForm.get('password')?.touched &&
+        addForm.get('password')?.hasError('pattern')
+      "
+      class="text-danger"
+    >
+      Password must contain at least one letter (capital or small), number, and
+      special characters (#, @, *, or &)
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" formControlName="phone" id="phone" class="form-control" />
+    <div
+      *ngIf="
+        addForm.get('phone')?.touched &&
+        addForm.get('phone')?.hasError('required')
+      "
+      class="text-danger"
+    >
+      * Required
+    </div>
+    <div
+      *ngIf="
+        addForm.get('phone')?.touched &&
+        addForm.get('phone')?.hasError('pattern')
+      "
+      class="text-danger"
+    >
+      Phone number must start with 9 and contain only digits
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="city">City:</label>
+    <select formControlName="city" id="city" class="form-control">
+      <option value="" disabled selected>Select city</option>
+      <option value="city1">Kolkata</option>
+      <option value="city2">Jalpaiguri</option>
+      <option value="city3">Siliguri</option>
+    </select>
+    <div
+      *ngIf="
+        addForm.get('city')?.touched && 
+        addForm.get('city')?.hasError('required')
+      "
+      class="text-danger"
+    >
+      * Required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="pin">Pin:</label>
+    <input type="text" formControlName="pin" id="pin" class="form-control" />
+    <div
+      *ngIf="
+        addForm.get('pin')?.touched && 
+        addForm.get('pin')?.hasError('maxlength')
+      "
+      class="text-danger"
+    >
+      Pin must have a maximum length of 6
+    </div>
+    <div
+      *ngIf="
+        addForm.get('pin')?.touched && 
+        addForm.get('pin')?.hasError('pattern')
+      "
+      class="text-danger"
+    >
+      Pin must contain only digits
+    </div>
+  </div>
+
+  <br />
+
+    <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid">
+      Add data
+    </button>
+    
+    <span class="button-space"></span>
+
+    <button type="reset" class="btn btn-secondary" (click)="resetForm()">
+      Reset
+    </button>
+
+</form>
+
+<div class="card mt-4" *ngIf="showFormData">
+    <div class="card-header">Form Data</div>
+    <div class="card-body">
+      <p><strong>First Name:</strong> {{ formData.firstName }}</p>
+      <p><strong>Last Name:</strong> {{ formData.lastName }}</p>
+      <p><strong>Gender:</strong> {{ formData.gender }}</p>
+      <p><strong>Qualification:</strong> {{ formData.qualification }}</p>
+      <p><strong>Email:</strong> {{ formData.email }}</p>
+      <p><strong>Phone:</strong> {{ formData.phone }}</p>
+      <p><strong>City:</strong> {{ formData.city }}</p>
+      <p><strong>Pin:</strong> {{ formData.pin }}</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,74 @@
+<!-- <p>job-portal works!</p> -->
+
+<form class="myNewForm" [formGroup]="addForm" (ngSubmit)="submitData()">
+
+
+    <!-- full name -->
+    <label for="fullname">Enter FullName: </label>
+    <input type="text" formControlName="fullname"> <br><br>
+
+    <ng-container *ngIf="addForm.get('fullname')?.touched">
+        <ng-container *ngIf="addForm.get('fullname')?.hasError('required')">
+            <p>*required field</p>
+        </ng-container>
+
+        <ng-container *ngIf="addForm.get('fullname')?.hasError('minlength')">
+            <p>minimum length is 3</p>
+        </ng-container>
+    </ng-container>
+    <!-- end -->
+
+    <!-- email -->
+    <label for="email">Enter Email: </label>
+    <input type="email" formControlName="email"> <br><br>
+
+    <ng-container *ngIf="addForm.get('email')?.touched">
+        <ng-container *ngIf="addForm.get('email')?.hasError('required')">
+            <p>*required field</p>
+        </ng-container>
+
+        <ng-container *ngIf="addForm.get('email')?.hasError('pattern')">
+            <p>abc@mail.com</p>
+        </ng-container>
+    </ng-container>
+    <!-- end -->
+
+    <!-- password -->
+    <label for="password">Enter PassWord: </label>
+    <input type="password" formControlName="password"> <br><br>
+
+    <ng-container *ngIf="addForm.get('password')?.touched">
+        <ng-container *ngIf="addForm.get('password')?.hasError('required')">
+            <p>*required field</p>
+        </ng-container>
+
+        <ng-container *ngIf="addForm.get('password')?.hasError('pattern')">
+            <p>Password must be 4 to 10 characters long and contain at least one letter and one digit.</p>
+        </ng-container>
+    </ng-container>
+
+    <!-- end -->
+
+    <!-- phonenumber -->
+    <label for="phonenumber">Enter PhoneNumber: </label>
+    <input type="phonenumber" formControlName="phonenumber"> <br><br>
+
+    <ng-container *ngIf="addForm.get('phonenumber')?.touched">
+        <ng-container *ngIf="addForm.get('phonenumber')?.hasError('required')">
+            <p>*required field</p>
+        </ng-container>
+
+        <ng-container *ngIf="addForm.get('phonenumber')?.hasError('pattern')">
+            <p>Invalid phone number. Please enter a valid 10-digit number or use the format XXX-XXX-XXXX.</p>
+        </ng-container>
+
+
+    </ng-container>
+
+
+    <!-- end -->
+    
+    <input type="submit" value="addData" [disabled]="addForm.invalid || addForm.pristine">
+
+
+</form>

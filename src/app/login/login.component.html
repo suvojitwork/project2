@@ -1,0 +1,20 @@
+<!-- <p>login works!</p> -->
+
+
+
+<div class="container d-flex justify-content-center align-items-center">
+    <form class="myform bg-custom p-5" [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+      <div class="wrapper">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter your email address">
+      </div>
+      <div class="wrapper">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" formControlName="password" id="password" class="form-control" placeholder="Enter your password">
+      </div>
+      <div class="wrapper">
+        <button type="submit" class="btn btn-success">Login</button>
+      </div>
+    </form>
+  </div>
+  
